@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: DEPLOY_NAME
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: gcr.io/ak-k8s-development/ng/nginx@sha256:c374b0685b336711a7b8c8648eebddd230c06142f4dd7d7153664ab2e084c687
+        ports:
+        - containerPort: 80
